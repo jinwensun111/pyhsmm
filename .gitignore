@@ -8,3 +8,6 @@
 *.o
 deps/
 tests/figures
+dist/
+.eggs/
+*.egg-info/
