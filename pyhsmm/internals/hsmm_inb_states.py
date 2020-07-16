@@ -1,6 +1,4 @@
-from __future__ import division
 from builtins import zip, range
-from future.utils import with_metaclass
 import numpy as np
 import abc
 import scipy.stats as stats
@@ -21,7 +19,7 @@ from .hsmm_states import HSMMStatesEigen
 # other branches, but dense matrix multiplies are actually competitive.
 
 
-class _HSMMStatesIntegerNegativeBinomialBase(with_metaclass(abc.ABCMeta, HSMMStatesEigen, HMMStatesEigen)):
+class _HSMMStatesIntegerNegativeBinomialBase(HSMMStatesEigen, HMMStatesEigen, metaclass=abc.ABCMeta):
 
     @property
     def rs(self):

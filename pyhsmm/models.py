@@ -1,5 +1,3 @@
-from __future__ import division
-from future.utils import iteritems, itervalues
 from builtins import map, zip
 
 import numpy as np
@@ -1270,13 +1268,13 @@ class _SeparateTransMixin(object):
     ### Gibbs sampling
 
     def resample_trans_distn(self):
-        for group_id, trans_distn in iteritems(self.trans_distns):
+        for group_id, trans_distn in self.trans_distns.items():
             trans_distn.resample([s.stateseq for s in self.states_list
                 if hash(s.group_id) == hash(group_id)])
         self._clear_caches()
 
     def resample_init_state_distn(self):
-        for group_id, init_state_distn in iteritems(self.init_state_distns):
+        for group_id, init_state_distn in self.init_state_distns.items():
             init_state_distn.resample([s.stateseq[0] for s in self.states_list
                 if hash(s.group_id) == hash(group_id)])
         self._clear_caches()
@@ -1284,13 +1282,13 @@ class _SeparateTransMixin(object):
     ### Mean field
 
     def meanfield_update_trans_distn(self):
-        for group_id, trans_distn in iteritems(self.trans_distns):
+        for group_id, trans_distn in self.trans_distns.items():
             states_list = [s for s in self.states_list if hash(s.group_id) == hash(group_id)]
             if len(states_list) > 0:
                 trans_distn.meanfieldupdate([s.expected_transcounts for s in states_list])
 
     def meanfield_update_init_state_distn(self):
-        for group_id, init_state_distn in iteritems(self.init_state_distns):
+        for group_id, init_state_distn in self.init_state_distns.items():
             states_list = [s for s in self.states_list if hash(s.group_id) == hash(group_id)]
             if len(states_list) > 0:
                 init_state_distn.meanfieldupdate([s.expected_states[0] for s in states_list])
@@ -1299,23 +1297,23 @@ class _SeparateTransMixin(object):
         vlb = 0.
         vlb += sum(s.get_vlb() for s in self.states_list)
         vlb += sum(trans_distn.get_vlb()
-                for trans_distn in itervalues(self.trans_distns))
+                for trans_distn in self.trans_distns.values())
         vlb += sum(init_state_distn.get_vlb()
-                for init_state_distn in itervalues(self.init_state_distns))
+                for init_state_distn in self.init_state_distns.values())
         vlb += sum(o.get_vlb() for o in self.obs_distns)
         return vlb
 
     ### SVI
 
     def _meanfield_sgdstep_trans_distn(self,mb_states_list,prob,stepsize):
-        for group_id, trans_distn in iteritems(self.trans_distns):
+        for group_id, trans_distn in self.trans_distns.items():
             trans_distn.meanfield_sgdstep(
                     [s.expected_transcounts for s in mb_states_list
                         if hash(s.group_id) == hash(group_id)],
                     prob,stepsize)
 
     def _meanfield_sgdstep_init_state_distn(self,mb_states_list,prob,stepsize):
-        for group_id, init_state_distn in iteritems(self.init_state_distns):
+        for group_id, init_state_distn in self.init_state_distns.items():
             init_state_distn.meanfield_sgdstep(
                     [s.expected_states[0] for s in mb_states_list
                         if hash(s.group_id) == hash(group_id)],

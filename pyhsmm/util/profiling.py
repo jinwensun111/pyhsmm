@@ -1,7 +1,5 @@
-from __future__ import division, print_function
 import numpy as np
 import sys, inspect, os, functools, time, collections
-from future.utils import iteritems
 
 ### use @timed for really basic timing
 
@@ -22,7 +20,7 @@ def show_timings(stream=None):
     if len(_timings) > 0:
         results = [(inspect.getsourcefile(f),f.__name__,
             len(vals),np.sum(vals),np.mean(vals),np.std(vals))
-            for f, vals in iteritems(_timings)]
+            for f, vals in _timings.items()]
         filename_lens = max(len(filename) for filename, _, _, _, _, _ in results)
         name_lens = max(len(name) for _, name, _, _, _, _ in results)
 

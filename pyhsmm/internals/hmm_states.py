@@ -1,6 +1,4 @@
-from __future__ import division
 from builtins import range
-from future.utils import with_metaclass
 import numpy as np
 from numpy import newaxis as na
 import abc
@@ -18,7 +16,7 @@ from pyhsmm.util.general import rle
 #  Mixins and bases  #
 ######################
 
-class _StatesBase(with_metaclass(abc.ABCMeta, object)):
+class _StatesBase(abc.ABC):
 
     def __init__(self,model,T=None,data=None,stateseq=None,
             generate=True,initialize_from_prior=True, fixed_stateseq=False):

@@ -1,4 +1,3 @@
-from __future__ import print_function
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext as _build_ext
 from setuptools.command.sdist import sdist as _sdist
@@ -11,8 +10,6 @@ from glob import glob
 import tarfile
 import shutil
 
-from future.standard_library import install_aliases
-install_aliases()
 from urllib.request import urlretrieve
 
 # use cython if we can import it successfully
@@ -112,8 +109,8 @@ setup(name='pyhsmm',
       keywords=['bayesian', 'inference', 'mcmc', 'time-series', 'monte-carlo',
                 'variational inference', 'mean field', 'vb'],
       install_requires=[
-          "numpy", "scipy", "matplotlib", "nose", "pybasicbayes >= 0.1.3", "future", "six"],
-      setup_requires=['numpy', "future", "six"],
+          "numpy", "scipy", "matplotlib", "nose", "pybasicbayes >= 0.1.3"],
+      setup_requires=['numpy'],
       ext_modules=ext_modules,
       classifiers=[
           'Development Status :: 4 - Beta',
