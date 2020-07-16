@@ -9,12 +9,7 @@ from scipy.special import digamma
 from pyhsmm.basic.distributions import GammaCompoundDirichlet, Multinomial, \
     MultinomialAndConcentration
 from pyhsmm.util.general import rle, cumsum, rcumsum
-try:
-    from pyhsmm.util.cstats import sample_crp_tablecounts, count_transitions
-except ImportError:
-    from warnings import warn
-    warn('using slow transition counting')
-    from pyhsmm.util.stats import sample_crp_tablecounts, count_transitions
+from pyhsmm.util.cstats import sample_crp_tablecounts, count_transitions
 
 # TODO separate out bayesian and nonbayesian versions?
 
