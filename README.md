@@ -1,7 +1,10 @@
-[![Build
-Status](https://travis-ci.org/mattjj/pyhsmm.svg?branch=master)](https://travis-ci.org/mattjj/pyhsmm)
-
 # Bayesian inference in HSMMs and HMMs #
+
+[![CI](https://github.com/maxmouchet/pyhsmm/workflows/CI/badge.svg)](https://github.com/maxmouchet/pyhsmm/actions?query=workflow%3ACI)
+[![codecov](https://codecov.io/gh/maxmouchet/pyhsmm/branch/master/graph/badge.svg)](https://codecov.io/gh/maxmouchet/pysmm)
+
+**This is a Python 3.6+ fork of [mattjj/pyhsmm](https://github.com/mattjj/pyhsmm). It drops support for Python 2.**  
+**See also [maxmouchet/pybasicbayes](https://github.com/maxmouchet/pybasicbayes).**
 
 This is a Python library for approximate unsupervised inference in
 Bayesian Hidden Markov Models (HMMs) and explicit-duration Hidden semi-Markov
