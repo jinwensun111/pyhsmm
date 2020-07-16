@@ -11,3 +11,5 @@ tests/figures
 dist/
 .eggs/
 *.egg-info/
+.coverage
+coverage.xml
