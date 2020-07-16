@@ -7,7 +7,7 @@
 **See also [maxmouchet/pybasicbayes](https://github.com/maxmouchet/pybasicbayes).**
 
 The main changes are:
-- Drop support for Python 2
+- Drop support for Python 2 (does not depend on `future` and `six`)
 - Supports the latest versions of scipy
 - Always use the C extensions
 - Builds on Windows with MSVC
