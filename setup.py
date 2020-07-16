@@ -29,13 +29,12 @@ def download_eigen(deps_dir):
 def find_extensions(deps_dir):
     extensions = []
     for pyx in Path("pyhsmm").glob("**/*.pyx"):
-        ext_name = '.'.join(pyx.with_suffix('').parts)
-        ext_source = pyx.with_suffix(".cpp")
+        ext_name = ".".join(pyx.with_suffix("").parts)
         print(f"Extension {ext_name}: {pyx}")
         extensions.append(
             Extension(
                 ext_name,
-                sources=[str(ext_source)],
+                sources=[str(pyx)],
                 include_dirs=[deps_dir, numpy.get_include()],
                 extra_compile_args=[
                     "-O3",
@@ -72,8 +71,13 @@ setup(
         "mean field",
         "vb",
     ],
-    install_requires=["numpy", "scipy", "matplotlib", "nose", "pybasicbayes >= 0.1.3"],
-    setup_requires=["cython", "numpy"],
+    install_requires=[
+        "numpy",
+        "scipy",
+        "matplotlib",
+        "nose",
+        "pybasicbayes@git+https://github.com/maxmouchet/pybasicbayes.git",
+    ],
     ext_modules=cythonize(extensions),
     classifiers=[
         "Development Status :: 4 - Beta",
