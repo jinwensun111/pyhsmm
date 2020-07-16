@@ -12,6 +12,7 @@
 - Always use the C extensions
 - Builds on Windows with MSVC
 - Minor code cleanups
+- Tested on Linux/macOS/Windows
 
 **Installation:**
 ```
