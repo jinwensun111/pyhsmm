@@ -6,6 +6,15 @@
 **This is a Python 3.6+ fork of [mattjj/pyhsmm](https://github.com/mattjj/pyhsmm). It drops support for Python 2.**  
 **See also [maxmouchet/pybasicbayes](https://github.com/maxmouchet/pybasicbayes).**
 
+The main changes are:
+- Drop support for Python 2
+- Supports the latest versions of scipy
+- Always use the C extensions
+- Builds on Windows with MSVC
+- Minor code cleanups
+
+---
+
 This is a Python library for approximate unsupervised inference in
 Bayesian Hidden Markov Models (HMMs) and explicit-duration Hidden semi-Markov
 Models (HSMMs), focusing on the Bayesian Nonparametric extensions, the HDP-HMM
