@@ -6,12 +6,19 @@
 **This is a Python 3.6+ fork of [mattjj/pyhsmm](https://github.com/mattjj/pyhsmm). It drops support for Python 2.**  
 **See also [maxmouchet/pybasicbayes](https://github.com/maxmouchet/pybasicbayes).**
 
-The main changes are:
+**Changes:**
 - Drop support for Python 2 (does not depend on `future` and `six`)
 - Supports the latest versions of scipy
 - Always use the C extensions
 - Builds on Windows with MSVC
 - Minor code cleanups
+- Tested on Linux/macOS/Windows
+
+**Installation:**
+```
+pip install --upgrade pip
+pip install --upgrade git+https://github.com/maxmouchet/pyhsmm.git
+```
 
 ---
 
