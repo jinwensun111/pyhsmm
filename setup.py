@@ -72,10 +72,9 @@ setup(
         "vb",
     ],
     install_requires=[
+        "matplotlib",
         "numpy",
         "scipy",
-        "matplotlib",
-        "nose",
         "pybasicbayes@git+https://github.com/maxmouchet/pybasicbayes.git",
     ],
     ext_modules=cythonize(extensions),
