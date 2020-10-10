@@ -4,6 +4,7 @@ from pathlib import Path
 from urllib.request import urlretrieve
 
 import numpy
+import requests
 from setuptools import Extension, setup
 from Cython.Build import cythonize
 
@@ -14,14 +15,17 @@ def download_eigen(deps_dir):
 
     # download Eigen if we don't have it in deps
     # TODO: Can we cleanup this?
-    eigenurl = "http://bitbucket.org/eigen/eigen/get/3.2.6.tar.gz"
+    eigenurl = "https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.tar.gz"
     eigenpath = deps_dir.joinpath("Eigen")
+    eigentarpath = deps_dir.joinpath("Eigen.tar.gz")
     if not eigenpath.exists():
         print("Downloading Eigen...")
-        eigentarpath, _ = urlretrieve(eigenurl)
+        r = requests.get(eigenurl)
+        with open(eigentarpath, 'wb') as f:
+            f.write(r.content)
         with tarfile.open(eigentarpath, "r") as tar:
             tar.extractall("deps")
-        thedir = next(deps_dir.glob("eigen-eigen-*"))
+        thedir = next(deps_dir.glob("eigen-*"))
         shutil.move(thedir.joinpath("Eigen"), eigenpath)
         print("...done!")
 
