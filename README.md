@@ -234,3 +234,9 @@ the style, see [pybasicbayes](https://github.com/mattjj/pybasicbayes).
 
 [Matt Johnson](https://github.com/mattjj), [Alex Wiltschko](https://github.com/alexbw), [Yarden Katz](https://github.com/yarden), [Chia-ying (Jackie) Lee](https://github.com/jacquelineCelia), [Scott Linderman](https://github.com/slinderman), [Kevin Squire](https://github.com/kmsquire), [Nick Foti](https://github.com/nfoti).
 
+## Appendix
+
+Just a test for the function of git.
+
+
+
